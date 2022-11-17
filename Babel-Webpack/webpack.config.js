@@ -31,5 +31,5 @@ module.exports = {
   },
   devtool: 'source-map',
   // https://webpack.js.org/configuration/mode
-  mode: 'development'
+  mode: 'development' // 기본값은 'production'
 };
