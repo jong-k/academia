@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { ReactNode } from 'react';
 
-const Counter = () => {
-  // const [count, setCount] = useState<number | null>(); // 초기값에 아무것도 넣지 않으면 null을 넣어줌
-  const [count, setCount] = useState<number>(0);
+type CounterProps = {
+  setCount: React.Dispatch<React.SetStateAction<number>>,
+  children: ReactNode
+}
 
+const Counter = ({  setCount, children }: CounterProps) => {
+
+  // 여기서 상태를 사용하지 않으므로 setCount 내부에 콜백함수를 사용
   return (
     <>
-      <h1>Count is {count}</h1>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
+      <h1>{children}</h1>
+      <button onClick={() => setCount(prev => prev + 1)}>+</button>
+      <button onClick={() => setCount(prev => prev - 1)}>-</button>
     </>
   );
 };
