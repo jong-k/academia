@@ -70,3 +70,8 @@ export default Counter;
 - App.tsx & Counter.tsx 참조
 ### 2.2. 제네릭
 - App.tsx & List.tsx 참조
+## 3. Hooks w/ Type
+- src/components/SubApp.tsx 참조
+### 3.1. useCallback
+- Click 이벤트 핸들러로 사용할 때는 이벤트는 MouseEvent 타입이 된다
+- 엔터키로 입력하는 경우에는 keyboardEvent 타입을 추가하면 된다
