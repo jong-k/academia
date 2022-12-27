@@ -7,3 +7,6 @@
 [React Projects](https://github.com/john-smilga/react-projects) 를 따라서 만들어본 레포
 ### 1.3. [Vite + TS + React](https://github.com/jong-k/code/tree/main/React/vite-ts)
 Vite와 TypeScript로 React 프로젝트를 시작하는 방법을 공부한 레포
+## 2. HTML & CSS
+### 2.1. [Sass 튜토리얼](https://github.com/jong-k/code)
+SCSS를 공부하고 정리한 레포
