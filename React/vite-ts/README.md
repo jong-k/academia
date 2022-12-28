@@ -3,7 +3,7 @@
 ## 1. 기본
 ### 1.1. Vite 시작하기
 ```
-npm create Vite@latest
+npm create vite@latest
 ```
 이후 CLI에서 질문에 응답하며 프로젝트 생성
 - 프로젝트 이름을 . 으로 하면 현재 폴더에 프로젝트 생성
