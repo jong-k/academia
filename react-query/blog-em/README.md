@@ -1,7 +1,7 @@
 # Blog-em Ipsum
-## 1. 앱 기능 설명
-- jsonplaceholder API에서 제공하는 lorem insum 데이터를 블로그형태 UI에 전달
-## 2. 사용된 개념
+## 1. Intro
+- jsonplaceholder API에서 제공하는 lorem insum 데이터를 블로그형태로 UI에 전달
+## 2. Work flow
 ### 2.1. install package
 - @tanstack/react-query
 - @tanstack/react-query-devtools
