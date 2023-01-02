@@ -41,7 +41,7 @@ export function InfinitePeople() {
     <>
       {isFetching && <div className="loading">Loading...</div>}
       <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
-        {data.pages.map((pageData) =>
+        {data!.pages.map((pageData) =>
           pageData.results.map(
             ({ name, hair_color, eye_color }: PersonType) => {
               return (

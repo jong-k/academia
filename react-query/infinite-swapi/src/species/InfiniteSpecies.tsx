@@ -38,7 +38,7 @@ export function InfiniteSpecies() {
     <>
       {isFetching && <div className="loading">loading...</div>}
       <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
-        {data.pages.map((pageData) =>
+        {data!.pages.map((pageData) =>
           pageData.results.map(
             ({ name, language, average_lifespan }: SpeciesType) => {
               return (
