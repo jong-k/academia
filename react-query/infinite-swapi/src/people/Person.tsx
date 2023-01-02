@@ -1,4 +1,10 @@
-export function Person({ name, hairColor, eyeColor }) {
+interface PersonType {
+  name: string;
+  hairColor: string;
+  eyeColor: string;
+}
+
+export function Person({ name, hairColor, eyeColor }: PersonType) {
   return (
     <li>
       {name}

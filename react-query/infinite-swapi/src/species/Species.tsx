@@ -1,4 +1,10 @@
-export function Species({ name, language, averageLifespan }) {
+interface SpeciesType {
+  name: string;
+  language: string;
+  averageLifespan: string;
+}
+
+export function Species({ name, language, averageLifespan }: SpeciesType) {
   return (
     <li>
       {name}
