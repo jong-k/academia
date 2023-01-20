@@ -1,5 +1,0 @@
-.idea/
-node_modules/
-# 컴파일된 .css 와 .map 파일은 업로드 제외
-*.css
-*.map
