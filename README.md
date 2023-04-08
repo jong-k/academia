@@ -1,1 +1,0 @@
-# Babel, Webpack를 활용한 ES6+/ES.NEXT 개발환경 구축
