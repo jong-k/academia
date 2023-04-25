@@ -1,9 +1,12 @@
 # academia
 
 ## 기술 스택
+### 핵심 기술
 - Next.js
 - TypeScript
 - Styled-components
+### 패키지 매니저
+- Yarn 3.5.0 (Yarn Berry)
 
 ## 커밋 컨벤션
 <details>
