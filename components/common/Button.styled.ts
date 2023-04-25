@@ -38,3 +38,16 @@ const Button = styled.button<ButtonProps>`
 `;
 
 export default Button;
+
+/*
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  margin-right: 5px;
+}
+
+ */
