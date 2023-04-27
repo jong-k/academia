@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout";
 
-const AddEventPage = () => {
+const AddForumPage = () => {
   return (
     <Layout title="이벤트 등록">
-      <h1>Add Event</h1>
+      <h1>Add Forum</h1>
     </Layout>
   );
 };
 
-export default AddEventPage;
+export default AddForumPage;

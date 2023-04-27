@@ -1,9 +1,12 @@
 import Head from "next/head";
-import styled, { ThemeProvider } from "styled-components";
+import { useRouter } from "next/router";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../../styles/global";
 import theme from "../../styles/theme";
+import { MainStyled } from "./styled";
 import Header from "../Header";
 import Index from "../Footer";
+import Banner from "../Banner";
 
 interface LayoutProps {
   title?: string;
@@ -15,9 +18,11 @@ interface LayoutProps {
 const Layout = ({
   title = "아카데미아",
   keywords,
-  description = "당신의 스터디 메이트를 찾아보세요",
+  description = "가까운 포럼과 스터디 메이트를 찾아보세요",
   children,
 }: LayoutProps) => {
+  const router = useRouter();
+  console.log(router);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -27,16 +32,11 @@ const Layout = ({
         <meta name="keywords" content={keywords} />
       </Head>
       <Header />
+      {router.pathname === "/" && <Banner />}
       <MainStyled>{children}</MainStyled>
       <Index />
     </ThemeProvider>
   );
 };
-
-const MainStyled = styled.main`
-  margin: 60px auto;
-  max-width: 960px;
-  padding: 0 30px;
-`;
 
 export default Layout;

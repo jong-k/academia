@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout";
 
-const EventPage = () => {
+const ForumPage = () => {
   return (
     <Layout>
-      <h1>My Events</h1>
+      <h1>My Forums</h1>
     </Layout>
   );
 };
 
-export default EventPage;
+export default ForumPage;

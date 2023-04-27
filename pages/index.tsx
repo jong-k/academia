@@ -5,8 +5,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Wrapper>
-        <h2>Welcome to Next.js!</h2>
-        <p>글꼴이 적용 왜 안되니!</p>
+        <h2>Home</h2>
       </Wrapper>
     </Layout>
   );
