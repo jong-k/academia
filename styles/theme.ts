@@ -8,6 +8,9 @@ const theme = {
   fonts: {
     pretendard: "Pretendard-Regular",
   },
+  heights: {
+    banner: "350px",
+  },
 };
 
 export default theme;

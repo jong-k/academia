@@ -47,6 +47,7 @@ export const UlStyled = styled.ul`
 export const Logo = styled.div`
   color: red;
   font-size: 20px;
+  user-select: none;
 
   ${mediaQuery("mobile")`
     margin: 20px 0;

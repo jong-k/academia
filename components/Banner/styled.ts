@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 300px;
+  height: ${(p) => p.theme.heights.banner};
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: #333 url("/images/banner-image.jpg") no-repeat center center;
+  background: #333 url("/images/banner-sample1.jpg") no-repeat center center;
   position: relative;
   display: flex;
   flex-direction: column;

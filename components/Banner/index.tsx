@@ -1,12 +1,16 @@
 import { Wrapper, ImageContainer, Title } from "./styled";
-import { BANNER_TEXT } from "../../enum";
 
-const Banner = () => {
+interface BannerProps {
+  title: string;
+  subtitle: string;
+}
+
+const Banner = ({ title, subtitle }: BannerProps) => {
   return (
     <Wrapper>
       <ImageContainer>
-        <Title>{BANNER_TEXT.TITLE}</Title>
-        <h2>{BANNER_TEXT.SUB_TITLE}</h2>
+        <Title>{title}</Title>
+        <h2>{subtitle}</h2>
       </ImageContainer>
     </Wrapper>
   );

@@ -7,6 +7,7 @@ import { MainStyled } from "./styled";
 import Header from "../Header";
 import Index from "../Footer";
 import Banner from "../Banner";
+import { BANNER_TEXT } from "../../enum";
 
 interface LayoutProps {
   title?: string;
@@ -22,7 +23,7 @@ const Layout = ({
   children,
 }: LayoutProps) => {
   const router = useRouter();
-  console.log(router);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -32,7 +33,9 @@ const Layout = ({
         <meta name="keywords" content={keywords} />
       </Head>
       <Header />
-      {router.pathname === "/" && <Banner />}
+      {router.pathname === "/" && (
+        <Banner title={BANNER_TEXT.TITLE} subtitle={BANNER_TEXT.SUB_TITLE} />
+      )}
       <MainStyled>{children}</MainStyled>
       <Index />
     </ThemeProvider>

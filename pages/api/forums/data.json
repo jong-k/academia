@@ -1,0 +1,48 @@
+{
+  "forums": [
+    {
+      "id": "1",
+      "name": "React 공식문서 스터디",
+      "place": "스타벅스 애오개역점",
+      "address": "서울 마포구 마포대로 201",
+      "host": "이강인",
+      "date": "2023-04-30",
+      "time": "20:00 PM",
+      "description": "리액트 공식 문서를 같이 읽으며 리액트의 기초부터 심화까지 공부할 예정입니다",
+      "image": "/images/forum-sample1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "이펙티브 TypeScript 독서 스터디",
+      "place": "투썸플레이스 마포공덕점",
+      "address": "서울 마포구 마포대로 156 공덕푸르지오시티",
+      "host": "손흥민",
+      "date": "2023-05-01",
+      "time": "20:30 PM",
+      "description": "이펙티브 타입스크립트 책을 함께 읽고 예제 코드를 분석해보며 타입에 대한 이해를 도모합니다",
+      "image": "/images/forum-sample2.jpg"
+    },
+    {
+      "id": "3",
+      "name": "모던 자바스크립트 Deep Dive 독서 스터디",
+      "place": "할리스 공덕점",
+      "address": "서울 마포구 마포대로 143",
+      "host": "김민재",
+      "date": "2023-05-02",
+      "time": "21:00 PM",
+      "description": "프론트엔드 개발자의 필수 스킬인 JavaScript를 깊게 공부하기 위해 JavaScript 관련 베스트 셀러인 이 책을 읽습니다",
+      "image": "/images/forum-sample3.jpg"
+    },
+    {
+      "id": "4",
+      "name": "HTML/CSS/JS 로 나만의 웹페이지 만들기",
+      "place": "스타벅스 공덕점",
+      "address": "서울 마포구 마포대로 130",
+      "host": "황희찬",
+      "date": "2023-05-01",
+      "time": "21:00 PM",
+      "description": "라이브러리나 프레임워크를 사용하지 않고, 나만의 웹페이지를 만들어봅니다",
+      "image": "/images/forum-sample4.jpg"
+    }
+  ]
+}
