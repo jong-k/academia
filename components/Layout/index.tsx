@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../../styles/global";
-import theme from "../../styles/theme";
+import GlobalStyles from "@/styles/global";
+import theme from "@/styles/theme";
 import { MainStyled } from "./styled";
 import Header from "../Header";
 import Index from "../Footer";

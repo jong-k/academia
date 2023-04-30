@@ -1,7 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { ForumType, ErrorType } from "../../../types";
 const { forums } = require("./data");
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default (
+  req: NextApiRequest,
+  res: NextApiResponse<ForumType[] | ErrorType>,
+) => {
   if (req.method === "GET") {
     res.status(200).json(forums);
   } else {

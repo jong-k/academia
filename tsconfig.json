@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/config/*": ["config/*"],
+      "@/styles/*": ["styles/*"],
+//      "@/enum/*": ["enum/*"], // @/enum/index 이렇게 써야되서 주석처리
+    },
     "lib": [
       "dom",
       "dom.iterable",

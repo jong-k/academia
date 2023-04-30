@@ -1,21 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { ForumType, ErrorType } from "../../../types";
 const { forums } = require("./data");
-
-interface ForumType {
-  id: string;
-  name: string;
-  place: string;
-  address: string;
-  host: string;
-  date: string;
-  time: string;
-  description: string;
-  image: string;
-}
-
-interface ErrorType {
-  message: string;
-}
 
 export default (
   req: NextApiRequest,
