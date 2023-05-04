@@ -5,9 +5,16 @@ import Image from "next/image";
 export const Wrapper = styled.div`
   position: relative;
   padding-top: 40px;
+
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    margin: 10px 0;
+  }
 `;
 
-export const Controls = styled.div`
+export const EditBox = styled.div`
   position: absolute;
   right: 30px;
   top: 0;
@@ -23,6 +30,6 @@ export const ImageStyled = styled(Image)`
 `;
 
 export const BackBtn = styled(Link)`
-  display: block;
   margin-top: 40px;
+  color: white;
 `;

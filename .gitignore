@@ -15,3 +15,6 @@
 
 # builds
 .next
+
+# env
+.env

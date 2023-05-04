@@ -5,6 +5,10 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   ${(p) =>
     p.secondary === true
       ? css`
@@ -36,16 +40,3 @@ export const Button = styled.button<ButtonProps>`
           }
         `}
 `;
-
-/*
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-icon svg {
-  margin-right: 5px;
-}
-
- */
