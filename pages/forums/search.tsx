@@ -19,21 +19,41 @@ export default function SearchPage({ forums }) {
 }
 
 export async function getServerSideProps({ query: { term } }) {
-  const query = qs.stringify({
-    _where: {
-      _or: [
-        { name_contains: term },
-        { host_contains: term },
-        { description_contains: term },
-        { place_contains: term },
-      ],
+  const query = qs.stringify(
+    {
+      filters: {
+        $or: [
+          {
+            name: {
+              $contains: term,
+            },
+          },
+          {
+            host: {
+              $contains: term,
+            },
+          },
+          {
+            description: {
+              $contains: term,
+            },
+          },
+          {
+            place: {
+              $contains: term,
+            },
+          },
+        ],
+      },
     },
-  });
-
-  const res = await fetch(`${API_URL}/forums?${query}`);
+    {
+      encodeValuesOnly: true, // prettify URL
+    },
+  );
+  const res = await fetch(`${API_URL}/api/forums?${query}&populate=*`);
   const forums = await res.json();
 
   return {
-    props: { forums },
+    props: { forums: forums.data },
   };
 }
