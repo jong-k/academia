@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:8.8.0"],\
             ["next", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:13.3.1"],\
             ["prettier", "npm:2.8.8"],\
+            ["qs", "npm:6.11.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:18.2.0"],\
             ["react-icons", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:4.8.0"],\
@@ -747,6 +748,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:8.8.0"],\
             ["next", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:13.3.1"],\
             ["prettier", "npm:2.8.8"],\
+            ["qs", "npm:6.11.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:18.2.0"],\
             ["react-icons", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:4.8.0"],\
@@ -3195,6 +3197,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/punycode-npm-2.3.0-df4bdce06b-39f760e09a.zip/node_modules/punycode/",\
           "packageDependencies": [\
             ["punycode", "npm:2.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["qs", [\
+        ["npm:6.11.1", {\
+          "packageLocation": "./.yarn/cache/qs-npm-6.11.1-1dedced93e-82ee78ef12.zip/node_modules/qs/",\
+          "packageDependencies": [\
+            ["qs", "npm:6.11.1"],\
+            ["side-channel", "npm:1.0.4"]\
           ],\
           "linkType": "HARD"\
         }]\
