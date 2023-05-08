@@ -1,4 +1,7 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/common/Button.styled";
@@ -11,10 +14,23 @@ import {
   BackBtn,
 } from "@/styles/pages/forumIdPage.styled";
 
-export default function Forum({ forum }) {
+export default function ForumPage({ forum }) {
+  const router = useRouter();
   const { attributes } = forum;
-  const deleteForum = () => {
-    console.log("delete!!");
+
+  const deleteForum = async () => {
+    if (window.confirm("정말 포럼을 삭제하시겠습니까?")) {
+      const res = await fetch(`http://localhost:1337/api/forums/${forum.id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message);
+      } else {
+        router.push("/forums");
+      }
+    }
   };
 
   return (
@@ -30,10 +46,17 @@ export default function Forum({ forum }) {
         </EditBox>
 
         <span>
-          {new Date(attributes.data).toLocaleDateString("ko-KR")}{" "}
+          {new Date(attributes.date).toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            weekday: "long",
+          })}
+          {" | "}
           {attributes.time}
         </span>
         <h2>{attributes.name}</h2>
+        <ToastContainer />
         {attributes.image.data && (
           <ImageStyled
             src={attributes.image.data.attributes.formats.medium.url}
@@ -43,14 +66,12 @@ export default function Forum({ forum }) {
             priority
           />
         )}
-
         <h3>호스트:</h3>
         <p>{attributes.host}</p>
         <h3>상세:</h3>
         <p>{attributes.description}</p>
         <h3>장소: {attributes.place}</h3>
         <p>{attributes.address}</p>
-
         <Button>
           <BackBtn href="/forums">{"<"} 돌아가기</BackBtn>
         </Button>

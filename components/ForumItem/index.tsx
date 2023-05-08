@@ -16,6 +16,7 @@ export default function ForumItem({ forum }) {
           width={170}
           height={100}
           alt="포럼 이미지"
+          priority
         />
       </ImageContainer>
 
@@ -27,7 +28,7 @@ export default function ForumItem({ forum }) {
             day: "numeric",
             weekday: "long",
           })}{" "}
-          @ {forum.attributes.time}
+          | {forum.attributes.time}
         </span>
         <h3>{forum.attributes.name}</h3>
       </InfoContainer>
