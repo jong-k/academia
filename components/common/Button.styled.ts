@@ -14,8 +14,8 @@ export const Button = styled.button<ButtonProps>`
       ? css`
           font: inherit;
           font-size: 13px;
-          background: #000;
-          color: #fff !important;
+          background: ${(p) => p.theme.colors.primary200};
+          color: ${(p) => p.theme.colors.bg100};
           border: 0;
           border-radius: 5px;
           padding: 5px 15px;
@@ -28,8 +28,8 @@ export const Button = styled.button<ButtonProps>`
         `
       : css`
           display: inline-block;
-          background: red;
-          color: #fff;
+          background: ${(p) => p.theme.colors.accent200};
+          color: ${(p) => p.theme.colors.bg100};
           padding: 10px 20px;
           cursor: pointer;
           border: 0;

@@ -11,7 +11,7 @@ export default function ForumItem({ forum }) {
           src={
             forum.attributes.image.data
               ? forum.attributes.image.data.attributes.formats.thumbnail.url
-              : "/images/forum-background-default1.jpg"
+              : "/images/forum-default.jpg"
           }
           width={170}
           height={100}

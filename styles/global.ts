@@ -18,11 +18,12 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Pretendard-Regular";
     line-height: 1.8;
+    color: #4A4A4A;
   }
   
   a {
     text-decoration: none;
-    color: steelblue;
+    color: #4A4A4A;
   }
   
   p {

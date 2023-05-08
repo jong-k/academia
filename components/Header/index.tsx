@@ -11,7 +11,7 @@ const Header = () => {
       <nav>
         <UlStyled>
           <li>
-            <LinkStyled href="/events">포럼</LinkStyled>
+            <LinkStyled href="/forums">포럼</LinkStyled>
           </li>
         </UlStyled>
       </nav>

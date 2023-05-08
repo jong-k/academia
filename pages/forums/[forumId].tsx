@@ -9,7 +9,7 @@ import {
   DeleteBtn,
   ImageStyled,
   BackBtn,
-} from "@/styles/forumIdPage.styled";
+} from "@/styles/pages/forumIdPage.styled";
 
 export default function Forum({ forum }) {
   const { attributes } = forum;
@@ -34,7 +34,7 @@ export default function Forum({ forum }) {
           {attributes.time}
         </span>
         <h2>{attributes.name}</h2>
-        {attributes.image && (
+        {attributes.image.data && (
           <ImageStyled
             src={attributes.image.data.attributes.formats.medium.url}
             width={960}

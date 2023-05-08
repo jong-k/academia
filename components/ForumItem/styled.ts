@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaQuery } from "../../utils";
+import { mediaQuery } from "@/styles/breakPoints";
 
 export const Wrapper = styled.div`
   display: flex;

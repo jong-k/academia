@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { mediaQuery } from "../../utils";
+import { mediaQuery } from "@/styles/breakPoints";
 
 export const HeaderStyled = styled.header`
   display: flex;

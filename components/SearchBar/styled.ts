@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
 export const SearchInput = styled.input`
   width: 250px;
   height: 35px;
