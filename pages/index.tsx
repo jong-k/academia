@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/common/Button.styled";
+import { Button } from "@/styles/common/Button.styled";
 import Layout from "@/components/Layout";
 import ForumItem from "@/components/ForumItem";
 import { API_URL } from "@/config/index";

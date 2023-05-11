@@ -1,8 +1,11 @@
+import { FormEvent, useState, ChangeEvent, useEffect } from "react";
 import { useRouter } from "next/router";
-import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaImage } from "react-icons/fa";
+import { API_URL } from "@/config/index";
 import Layout from "@/components/Layout";
 import {
   InputStyled,
@@ -12,42 +15,45 @@ import {
   GridBox,
 } from "@/styles/common/ForumForm.styled";
 
-export default function AddForumPage() {
-  const router = useRouter();
-  // react-toastify 사용을 위해
-  // SSR로 인한 Hydration 에러를 방지하기 위해
-  // 페이지 렌더링 시 true로 바뀌는 mounted 상태
+export default function EditForum({ forum }) {
   const [mounted, setMounted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    place: "",
-    address: "",
-    host: "",
-    date: "",
-    time: "",
-    description: "",
+  const { name, host, place, address, date, time, description, image } =
+    forum.attributes;
+  const [values, setValues] = useState({
+    name,
+    host,
+    place,
+    address,
+    date,
+    time,
+    description,
   });
+  const [imgPreview, setImgPreview] = useState(
+    image.data ? image.data.attributes.formats.thumbnail.url : null,
+  );
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const hasEmptyFields = Object.values(formData).some(
-      (field) => field === "",
-    );
-    if (hasEmptyFields) {
-      toast.error("모든 칸을 입력해야 합니다");
-      return;
-    }
 
-    const res = await fetch("http://localhost:1337/api/forums", {
-      method: "POST",
+    // validation
+    const hasEmptyFields = Object.values(values).some((value) => value === "");
+    if (hasEmptyFields) toast.error("모든 칸을 입력해주세요");
+
+    const res = await fetch(`http://localhost:1337/api/forums/${forum.id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data: formData }),
+
+      body: JSON.stringify({
+        data: values,
+      }),
     });
 
     if (!res.ok) {
-      toast.error("포럼 등록에 실패했습니다. 다시 시도해주세요");
+      toast.error("포럼을 수정하지 못했습니다");
+      console.log(res);
     } else {
       const { data: forum } = await res.json();
       router.push(`/forums/${forum.id}`);
@@ -58,7 +64,7 @@ export default function AddForumPage() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setValues({ ...values, [name]: value });
   };
 
   useEffect(() => {
@@ -67,9 +73,9 @@ export default function AddForumPage() {
 
   return (
     mounted && (
-      <Layout title="포럼 등록 | 아카데미아">
-        <Link href="/forums">뒤로 가기</Link>
-        <h1>포럼 등록</h1>
+      <Layout>
+        <Link href="/forums">이전 페이지</Link>
+        <h2>포럼 수정</h2>
         <ToastContainer />
         <form onSubmit={handleSubmit}>
           <GridBox>
@@ -79,17 +85,17 @@ export default function AddForumPage() {
                 type="text"
                 name="name"
                 id="name"
-                value={formData.name}
+                value={values.name}
                 onChange={handleInputChange}
               />
             </div>
             <div>
-              <LabelStyled htmlFor="host">호스트 이름</LabelStyled>
+              <LabelStyled htmlFor="host">호스트</LabelStyled>
               <InputStyled
                 type="text"
                 name="host"
                 id="host"
-                value={formData.host}
+                value={values.host}
                 onChange={handleInputChange}
               />
             </div>
@@ -99,7 +105,7 @@ export default function AddForumPage() {
                 type="text"
                 name="place"
                 id="place"
-                value={formData.place}
+                value={values.place}
                 onChange={handleInputChange}
               />
             </div>
@@ -109,7 +115,7 @@ export default function AddForumPage() {
                 type="text"
                 name="address"
                 id="address"
-                value={formData.address}
+                value={values.address}
                 onChange={handleInputChange}
               />
             </div>
@@ -119,7 +125,7 @@ export default function AddForumPage() {
                 type="date"
                 name="date"
                 id="date"
-                value={formData.date}
+                value={values.date} // FIXME 날짜 형식 관
                 onChange={handleInputChange}
               />
             </div>
@@ -129,23 +135,51 @@ export default function AddForumPage() {
                 type="text"
                 name="time"
                 id="time"
-                value={formData.time}
+                value={values.time}
                 onChange={handleInputChange}
               />
             </div>
           </GridBox>
+
           <div>
-            <LabelStyled htmlFor="description">상세 내용</LabelStyled>
+            <LabelStyled htmlFor="description">포럼 상세</LabelStyled>
             <TextareaStyled
               name="description"
               id="description"
-              value={formData.description}
+              value={values.description}
               onChange={handleInputChange}
             />
           </div>
-          <ButtonStyled type="submit">등록</ButtonStyled>
+          <ButtonStyled type="submit">포럼 수정</ButtonStyled>
         </form>
+        <h2>포럼 이미지</h2>
+        {imgPreview ? (
+          <Image src={imgPreview} alt="포럼 이미지" width={170} height={100} />
+        ) : (
+          <div>
+            <p>등록된 이미지가 없습니다</p>
+          </div>
+        )}
+        <div>
+          <ButtonStyled>
+            <FaImage />
+          </ButtonStyled>
+        </div>
       </Layout>
     )
   );
+}
+
+export async function getServerSideProps({ params: { forumId } }) {
+  const res = await fetch(
+    `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+  );
+  const forumData = await res.json();
+  const forum = forumData.data[0];
+
+  return {
+    props: {
+      forum,
+    },
+  };
 }

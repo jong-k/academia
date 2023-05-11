@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/common/Button.styled";
+import { Button } from "@/styles/common/Button.styled";
 import { API_URL } from "@/config/index";
 import {
   Wrapper,
@@ -12,7 +12,7 @@ import {
   DeleteBtn,
   ImageStyled,
   BackBtn,
-} from "@/styles/pages/forumIdPage.styled";
+} from "@/styles/pages/ForumIdPage.styled";
 
 export default function ForumPage({ forum }) {
   const router = useRouter();
@@ -81,7 +81,7 @@ export default function ForumPage({ forum }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/api/forums?populate=*`);
+  const res = await fetch(`${API_URL}/forums?populate=*`);
   const forumsData = await res.json();
   const forums = forumsData.data;
 
@@ -97,14 +97,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { forumId } }) {
   const res = await fetch(
-    `${API_URL}/api/forums?filters[id][$eq]=${forumId}&populate=*`,
+    `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
   );
   const forumsData = await res.json();
-  const forums = await forumsData.data;
+  const forum = await forumsData.data[0];
 
   return {
     props: {
-      forum: forums[0],
+      forum,
     },
     revalidate: 1,
   };

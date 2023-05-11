@@ -50,7 +50,7 @@ export async function getServerSideProps({ query: { term } }) {
       encodeValuesOnly: true, // prettify URL
     },
   );
-  const res = await fetch(`${API_URL}/api/forums?${query}&populate=*`);
+  const res = await fetch(`${API_URL}/forums?${query}&populate=*`);
   const forums = await res.json();
 
   return {

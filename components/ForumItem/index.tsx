@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Wrapper, ImageContainer, InfoContainer } from "./styled";
-import { Button } from "../common/Button.styled";
+import { Button } from "@/styles/common/Button.styled";
 
 export default function ForumItem({ forum }) {
   return (
