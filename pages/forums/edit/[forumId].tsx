@@ -16,6 +16,7 @@ import {
 } from "@/styles/common/ForumForm.styled";
 
 export default function EditForum({ forum }) {
+  console.log(forum);
   const [mounted, setMounted] = useState(false);
   const { name, host, place, address, date, time, description, image } =
     forum.attributes;
@@ -55,7 +56,6 @@ export default function EditForum({ forum }) {
       toast.error("포럼을 수정하지 못했습니다");
       console.log(res);
     } else {
-      const { data: forum } = await res.json();
       router.push(`/forums/${forum.id}`);
     }
   };
@@ -170,16 +170,24 @@ export default function EditForum({ forum }) {
   );
 }
 
+// 변경이 발생했을 수 있으므로 최신 데이터를 불러오기 위해 getStaticProps 대신 사용
 export async function getServerSideProps({ params: { forumId } }) {
-  const res = await fetch(
-    `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
-  );
-  const forumData = await res.json();
-  const forum = forumData.data[0];
+  try {
+    const res = await fetch(
+      `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+    );
+    const forumData = await res.json();
+    const forum = forumData.data[0];
 
-  return {
-    props: {
-      forum,
-    },
-  };
+    return {
+      props: {
+        forum,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: {},
+    };
+  }
 }

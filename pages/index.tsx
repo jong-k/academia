@@ -23,7 +23,7 @@ export default function HomePage({ forums }) {
 // 빌드 타임에 서버사이드에서 호출되는 함수 => SSG 기능
 export async function getStaticProps() {
   const res = await fetch(
-    `${API_URL}/api/forums?populate=*&sort=date&pagination[limit]=3`,
+    `${API_URL}/forums?populate=*&sort=date&pagination[limit]=3`,
   );
   const { data: forums } = await res.json();
 
