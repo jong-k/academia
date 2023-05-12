@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Layout from "@/components/Layout";
 import { Button } from "@/styles/common/Button.styled";
-import { API_URL } from "@/config/index";
+import { QUERY_URL } from "@/config/index";
 import {
   Wrapper,
   EditBox,
@@ -37,7 +37,7 @@ export default function ForumPage({ forum }) {
     <Layout>
       <Wrapper>
         <EditBox>
-          <Link href={`/forums/edit/${attributes.id}`}>
+          <Link href={`/forums/edit/${forum.id}`}>
             <FaPencilAlt /> 포럼 정보 수정
           </Link>
           <DeleteBtn href="#" onClick={deleteForum}>
@@ -81,7 +81,7 @@ export default function ForumPage({ forum }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/forums?populate=*`);
+  const res = await fetch(`${QUERY_URL}/forums?populate=*`);
   const forumsData = await res.json();
   const forums = forumsData.data;
 
@@ -97,7 +97,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { forumId } }) {
   const res = await fetch(
-    `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+    `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
   );
   const forumsData = await res.json();
   const forum = await forumsData.data[0];

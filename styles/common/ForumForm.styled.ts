@@ -43,3 +43,9 @@ export const GridBox = styled.form`
     grid-template-columns: 1fr;
   `}
 `;
+
+export const FileBox = styled.div`
+  border: 1px #ccc solid;
+  background-color: #f4f4f4;
+  padding: 10px;
+`;

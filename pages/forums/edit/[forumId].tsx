@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaImage } from "react-icons/fa";
-import { API_URL } from "@/config/index";
+import { QUERY_URL, MUTATION_URL } from "@/config/index";
 import Layout from "@/components/Layout";
 import {
   InputStyled,
@@ -14,10 +14,12 @@ import {
   ButtonStyled,
   GridBox,
 } from "@/styles/common/ForumForm.styled";
+import ImgUpload from "@/components/ImgUpload";
+import Modal from "@/components/Modal";
 
 export default function EditForum({ forum }) {
-  console.log(forum);
   const [mounted, setMounted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { name, host, place, address, date, time, description, image } =
     forum.attributes;
   const [values, setValues] = useState({
@@ -34,6 +36,22 @@ export default function EditForum({ forum }) {
   );
   const router = useRouter();
 
+  const imgUploaded = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      const res = await fetch(
+        `${MUTATION_URL}/forums?filters[id][$eq]=${forum.id}&populate=*`,
+      );
+      const data = await res.json();
+      console.log(data);
+      setImgPreview(
+        data.data[0].attributes.image.data.attributes.formats.thumbnail.url,
+      );
+    } catch (err) {
+      window.alert("에러가 발생했습니다");
+      console.log(err);
+    }
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -41,22 +59,21 @@ export default function EditForum({ forum }) {
     const hasEmptyFields = Object.values(values).some((value) => value === "");
     if (hasEmptyFields) toast.error("모든 칸을 입력해주세요");
 
-    const res = await fetch(`http://localhost:1337/api/forums/${forum.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    try {
+      const res = await fetch(`${MUTATION_URL}/forums/${forum.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify({
-        data: values,
-      }),
-    });
-
-    if (!res.ok) {
+        body: JSON.stringify({
+          data: values,
+        }),
+      });
+      await router.push(`/forums/${forum.id}`);
+    } catch (err) {
       toast.error("포럼을 수정하지 못했습니다");
-      console.log(res);
-    } else {
-      router.push(`/forums/${forum.id}`);
+      console.log(err);
     }
   };
 
@@ -161,10 +178,14 @@ export default function EditForum({ forum }) {
           </div>
         )}
         <div>
-          <ButtonStyled>
+          <ButtonStyled onClick={() => setShowModal(true)}>
             <FaImage />
+            <span>이미지 설정</span>
           </ButtonStyled>
         </div>
+        <Modal show={showModal} onClose={() => setShowModal(false)}>
+          <ImgUpload forumId={forum.id} imgUploaded={imgUploaded} />
+        </Modal>
       </Layout>
     )
   );
@@ -174,7 +195,7 @@ export default function EditForum({ forum }) {
 export async function getServerSideProps({ params: { forumId } }) {
   try {
     const res = await fetch(
-      `${API_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+      `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
     );
     const forumData = await res.json();
     const forum = forumData.data[0];

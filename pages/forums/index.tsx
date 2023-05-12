@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import ForumItem from "@/components/ForumItem";
-import { API_URL } from "@/config/index";
+import { QUERY_URL } from "@/config/index";
 
 export default function ForumPage({ forums }) {
   return (
@@ -16,7 +16,7 @@ export default function ForumPage({ forums }) {
 
 // 빌드 타임에 서버사이드에서 호출되는 함수 => SSG 기능
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/forums?populate=*&_sort=date:ASC`);
+  const res = await fetch(`${QUERY_URL}/forums?populate=*&_sort=date:ASC`);
   const forumsData = await res.json();
   const forums = forumsData.data;
 
