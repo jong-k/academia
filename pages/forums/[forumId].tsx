@@ -9,6 +9,8 @@ import { QUERY_URL } from "@/config/index";
 import {
   Wrapper,
   EditBox,
+  EditBtn,
+  PStyled,
   DeleteBtn,
   ImageStyled,
   BackBtn,
@@ -37,11 +39,17 @@ export default function ForumPage({ forum }) {
     <Layout>
       <Wrapper>
         <EditBox>
-          <Link href={`/forums/edit/${forum.id}`}>
-            <FaPencilAlt /> 포럼 정보 수정
-          </Link>
-          <DeleteBtn href="#" onClick={deleteForum}>
-            <FaTimes /> 포럼 삭제
+          <EditBtn onClick={() => router.push(`/forums/edit/${forum.id}`)}>
+            <div>
+              <FaPencilAlt />
+            </div>
+            <PStyled>포럼 정보 수정</PStyled>
+          </EditBtn>
+          <DeleteBtn onClick={deleteForum}>
+            <div>
+              <FaTimes />
+            </div>
+            <PStyled>포럼 삭제</PStyled>
           </DeleteBtn>
         </EditBox>
 

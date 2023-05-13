@@ -1,12 +1,13 @@
 import { ChangeEvent, useState } from "react";
-import Image from "next/image";
 import { MUTATION_URL } from "@/config/index";
 import { FileBox } from "@/styles/common/ForumForm.styled";
+import { ButtonStyled } from "./styled";
 
 export default function ImgUpload({ forumId, imgUploaded }) {
   const [img, setImg] = useState(null);
 
   const handleSubmit = async (e) => {
+    if (!img) return;
     e.preventDefault();
     const formData = new FormData();
     formData.append("files", img);
@@ -19,11 +20,9 @@ export default function ImgUpload({ forumId, imgUploaded }) {
         method: "POST",
         body: formData,
       });
-      console.log(res);
       imgUploaded();
     } catch (err) {
       window.alert("이미지 등록에 실패했습니다");
-      console.log(err);
     }
   };
 
@@ -38,8 +37,7 @@ export default function ImgUpload({ forumId, imgUploaded }) {
         <FileBox>
           <input type="file" accept="image/*" onChange={handleFileChange} />
         </FileBox>
-        {/*<Image src={img} alt="" width={200} height={150} priority />*/}
-        <button>등록</button>
+        <ButtonStyled>등록</ButtonStyled>
       </form>
     </div>
   );

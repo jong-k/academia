@@ -33,7 +33,7 @@ export const ButtonStyled = styled.button`
   }
 `;
 
-export const GridBox = styled.form`
+export const GridBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;

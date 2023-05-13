@@ -24,7 +24,7 @@ export default function Modal({ show, onClose, children, title }: ModalProps) {
     onClose();
   };
 
-  useEffect(() => setIsBrowser(true));
+  useEffect(() => setIsBrowser(true), []);
 
   const modalContent = show ? (
     <Overlay>
