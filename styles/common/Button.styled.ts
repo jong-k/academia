@@ -8,6 +8,7 @@ export const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 
   ${(p) =>
     p.secondary === true

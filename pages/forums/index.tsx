@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
 import ForumItem from "@/components/ForumItem";
-import { QUERY_URL } from "@/config/index";
+import { QUERY_URL, PER_PAGE } from "@/config/index";
+import Pagination from "@/components/Pagination";
 
-export default function ForumPage({ forums }) {
+export default function ForumPage({ forums, page, total }) {
   return (
     <Layout>
       <h1>My Forums</h1>
@@ -10,18 +11,21 @@ export default function ForumPage({ forums }) {
       {forums.map((forum) => (
         <ForumItem key={forum.id} forum={forum} />
       ))}
+      <Pagination page={page} total={total} />
     </Layout>
   );
 }
 
-// 빌드 타임에 서버사이드에서 호출되는 함수 => SSG 기능
-export async function getStaticProps() {
-  const res = await fetch(`${QUERY_URL}/forums?populate=*&_sort=date:ASC`);
+// 페이지네이션을 위해 getServerSideProps 사용
+export async function getServerSideProps({ query: { page = 1 } }) {
+  const start = +page === 1 ? 0 : (+page - 1) * PER_PAGE;
+  const res = await fetch(
+    `${QUERY_URL}/forums?populate=*&_sort=date:ASC&pagination[start]=${start}&pagination[limit]=${PER_PAGE}`,
+  );
   const forumsData = await res.json();
   const forums = forumsData.data;
 
   return {
-    props: { forums },
-    revalidate: 1, // 1초마다 페이지 재생성
+    props: { forums, page: +page, total: forumsData.meta.pagination.total },
   };
 }
