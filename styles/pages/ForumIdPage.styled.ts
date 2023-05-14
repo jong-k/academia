@@ -19,7 +19,7 @@ export const EditBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 30px;
+  right: -50px;
   top: 0;
 `;
 
@@ -27,6 +27,7 @@ export const EditBtn = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 `;
 
 export const PStyled = styled.p`
@@ -39,6 +40,7 @@ export const DeleteBtn = styled.div`
   margin-left: 20px;
   color: red;
   gap: 0.5rem;
+  cursor: pointer;
 
   svg {
     transform: scale(1.3);

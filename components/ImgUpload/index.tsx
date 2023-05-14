@@ -21,6 +21,7 @@ export default function ImgUpload({ forumId, imgUploaded }) {
         body: formData,
       });
       imgUploaded();
+      window.alert("이미지 등록에 성공했습니다");
     } catch (err) {
       window.alert("이미지 등록에 실패했습니다");
     }
@@ -37,7 +38,7 @@ export default function ImgUpload({ forumId, imgUploaded }) {
         <FileBox>
           <input type="file" accept="image/*" onChange={handleFileChange} />
         </FileBox>
-        <ButtonStyled>등록</ButtonStyled>
+        <ButtonStyled type="submit">등록</ButtonStyled>
       </form>
     </div>
   );

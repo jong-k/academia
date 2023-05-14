@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaImage } from "react-icons/fa";
 import { QUERY_URL, MUTATION_URL } from "@/config/index";
 import Layout from "@/components/Layout";
 import {
@@ -92,7 +91,7 @@ export default function EditForum({ forum }) {
     mounted && (
       <Layout>
         <Link href="/forums">이전 페이지</Link>
-        <h2>포럼 수정</h2>
+        <h2>포럼 정보 수정</h2>
         <ToastContainer />
         <form onSubmit={handleSubmit}>
           <GridBox>
@@ -179,8 +178,7 @@ export default function EditForum({ forum }) {
         )}
         <div>
           <ButtonStyled onClick={() => setShowModal(true)}>
-            <FaImage />
-            <span>이미지 설정</span>
+            <span>이미지 수정</span>
           </ButtonStyled>
         </div>
         <Modal show={showModal} onClose={() => setShowModal(false)}>

@@ -13,6 +13,9 @@ const Header = () => {
           <li>
             <LinkStyled href="/forums">포럼</LinkStyled>
           </li>
+          <li>
+            <LinkStyled href="/forums/add">새 포럼 등록</LinkStyled>
+          </li>
         </UlStyled>
       </nav>
     </HeaderStyled>

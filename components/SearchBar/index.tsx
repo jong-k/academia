@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { SearchInput } from "./styled";
+import { Wrapper, SearchInput } from "./styled";
 
 export default function SearchBar() {
   const [term, setTerm] = useState("");
@@ -13,7 +13,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <Wrapper>
       <form onSubmit={handleSubmit}>
         <SearchInput
           type="text"
@@ -22,6 +22,6 @@ export default function SearchBar() {
           onChange={(e) => setTerm(e.target.value)}
         />
       </form>
-    </div>
+    </Wrapper>
   );
 }
