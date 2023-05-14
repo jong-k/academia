@@ -190,13 +190,14 @@ export default function EditForum({ forum }) {
 }
 
 // 변경이 발생했을 수 있으므로 최신 데이터를 불러오기 위해 getStaticProps 대신 사용
-export async function getServerSideProps({ params: { forumId } }) {
+export async function getServerSideProps({ params: { forumId }, req }) {
   try {
     const res = await fetch(
       `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
     );
     const forumData = await res.json();
     const forum = forumData.data[0];
+    console.log(req.header.cookie);
 
     return {
       props: {
