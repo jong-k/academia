@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FormEvent } from "react";
+import { FormEvent, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout";
-import { useSignup } from "../../hooks/useSignup";
+import { useSignup } from "@/hooks/useSignup";
 import {
   Wrapper,
   AuthBox,
@@ -11,9 +11,11 @@ import {
   AuthInput,
   SubmitButton,
 } from "@/styles/common/AuthForm.styled";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function SignupPage() {
   const { signupForm, handleInputChange, onSubmit } = useSignup();
+  const { error } = useContext(AuthContext);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -23,6 +25,10 @@ export default function SignupPage() {
     }
     onSubmit(e);
   };
+
+  useEffect(() => {
+    if (error) toast.error(error);
+  });
 
   return (
     <Layout title="회원 가입">

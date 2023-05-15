@@ -7,15 +7,16 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   if (req.method === "POST") {
-    const { identifier, password } = req.body;
+    const { username, email, password } = req.body;
     try {
-      const strapiRes = await fetch(`${QUERY_URL}/auth/local`, {
+      const strapiRes = await fetch(`${QUERY_URL}/auth/local/register`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          identifier,
+          username,
+          email,
           password,
         }),
       });
@@ -33,6 +34,7 @@ export default async function handler(
           path: "/",
         }),
       );
+
       res.status(200).json({ user: data.user });
     } catch (err) {
       res.status(err.status).json({ message: err.message });

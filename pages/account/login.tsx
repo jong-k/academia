@@ -18,9 +18,8 @@ export default function LoginPage() {
   const { error } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(error);
     if (error) toast.error(error);
-  }, [error]);
+  });
 
   return (
     <Layout title="로그인">

@@ -8,7 +8,7 @@ export const useSignup = () => {
     password: "",
     passConfirm: "",
   });
-  const { signup, error } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target as HTMLInputElement;

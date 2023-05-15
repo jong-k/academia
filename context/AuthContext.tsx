@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { MUTATION_URL, CLIENT_URL } from "@/config/index";
+import { CLIENT_URL } from "@/config/index";
 
 export const AuthContext = createContext(null);
 
@@ -10,43 +10,71 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   const signup = async (user) => {
-    console.log(user);
+    try {
+      const res = await fetch(`${CLIENT_URL}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      const data = await res.json();
+
+      setUser(data.user);
+      router.push("/account/dashboard");
+    } catch (err) {
+      setError(err.message);
+      setError(null);
+    }
   };
 
   const login = async ({ email: identifier, password }) => {
-    const res = await fetch(`${CLIENT_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        identifier,
-        password,
-      }),
-    });
+    try {
+      const res = await fetch(`${CLIENT_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          identifier,
+          password,
+        }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (res.ok) {
       setUser(data.user);
       router.push("/account/dashboard");
-    } else {
-      setError(data.message); // toast 작동
+    } catch (err) {
+      setError(err.message); // toast 작동
       setError(null);
     }
   };
 
   const logout = async () => {
-    console.log("logout");
+    try {
+      const res = await fetch(`${CLIENT_URL}/logout`, {
+        method: "POST",
+      });
+
+      setUser(null);
+      router.push("/");
+    } catch (err) {
+      setError(err.message);
+      setError(null);
+    }
   };
 
+  // 로그인 상태인지 체크하는 함수
   const checkUserLoggedIn = async () => {
-    console.log("check");
-    const res = await fetch(`${CLIENT_URL}/user`);
-    const data = await res.json();
-
-    if (res.ok) setUser(data.user);
-    else setUser(null);
+    try {
+      const res = await fetch(`${CLIENT_URL}/user`);
+      const data = await res.json();
+      setUser(data.user);
+    } catch (err) {
+      setUser(null);
+    }
   };
 
   useEffect(() => {
