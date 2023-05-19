@@ -14,3 +14,11 @@ export const ForumTitle = styled.h2`
   margin-bottom: 10px;
   flex: 2;
 `;
+
+export const OptionsBox = styled.div`
+  display: flex;
+`;
+
+export const DeleteBtn = styled.div`
+  cursor: pointer;
+`;

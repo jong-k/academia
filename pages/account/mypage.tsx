@@ -1,13 +1,29 @@
+import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import ForumDashboard from "@/components/ForumDashboard";
 import { parseCookies } from "../../utils";
 import { QUERY_URL } from "@/config/index";
 import { Wrapper } from "@/styles/pages/Mypage.styled";
+import { MUTATION_URL } from "@/config/index";
 
-export default function MypagePage({ forums }) {
-  console.log("여기인강", forums);
-  const deleteForum = () => {
-    console.log("delete!");
+export default function MypagePage({ forums, token }) {
+  const router = useRouter();
+
+  const deleteForum = async (forumId: number) => {
+    const url = `${MUTATION_URL}/forums/${forumId}`;
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!res.ok) {
+        console.log(res);
+      } else {
+        await router.reload();
+      }
+    }
   };
 
   return (
@@ -15,10 +31,11 @@ export default function MypagePage({ forums }) {
       <Wrapper>
         <h2>대시보드</h2>
         <h3>내 포럼 정보</h3>
-        {forums.data.length &&
-          forums.data.map((forum) => (
+        {forums &&
+          forums.map((forum) => (
             <ForumDashboard
               key={forum.id}
+              id={forum.id}
               forum={forum.attributes}
               onDelete={deleteForum}
             />
@@ -43,7 +60,8 @@ export async function getServerSideProps({ req }) {
   if (res.ok) {
     return {
       props: {
-        forums,
+        forums: forums.data,
+        token,
       },
     };
   } else {

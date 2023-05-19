@@ -15,8 +15,9 @@ import {
 } from "@/styles/common/ForumForm.styled";
 import ImgUpload from "@/components/ImgUpload";
 import Modal from "@/components/Modal";
+import { parseCookies } from "../../../utils";
 
-export default function EditForum({ forum }) {
+export default function EditForum({ forum, token }) {
   const [mounted, setMounted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { name, host, place, address, date, time, description, image } =
@@ -41,7 +42,6 @@ export default function EditForum({ forum }) {
         `${MUTATION_URL}/forums?filters[id][$eq]=${forum.id}&populate=*`,
       );
       const data = await res.json();
-      console.log(data);
       setImgPreview(
         data.data[0].attributes.image.data.attributes.formats.thumbnail.url,
       );
@@ -56,23 +56,31 @@ export default function EditForum({ forum }) {
 
     // validation
     const hasEmptyFields = Object.values(values).some((value) => value === "");
-    if (hasEmptyFields) toast.error("모든 칸을 입력해주세요");
+    if (hasEmptyFields) {
+      toast.error("모든 칸을 입력해주세요");
+      return;
+    }
 
-    try {
-      const res = await fetch(`${MUTATION_URL}/forums/${forum.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const res = await fetch(`${MUTATION_URL}/forums/${forum.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
 
-        body: JSON.stringify({
-          data: values,
-        }),
-      });
-      await router.push(`/forums/${forum.id}`);
-    } catch (err) {
+      body: JSON.stringify({
+        data: values,
+      }),
+    });
+
+    if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error("수정 권한이 없습니다");
+        return;
+      }
       toast.error("포럼을 수정하지 못했습니다");
-      console.log(err);
+    } else {
+      await router.push(`/forums/${forum.id}`);
     }
   };
 
@@ -182,7 +190,11 @@ export default function EditForum({ forum }) {
           </ButtonStyled>
         </div>
         <Modal show={showModal} onClose={() => setShowModal(false)}>
-          <ImgUpload forumId={forum.id} imgUploaded={imgUploaded} />
+          <ImgUpload
+            forumId={forum.id}
+            imgUploaded={imgUploaded}
+            token={token}
+          />
         </Modal>
       </Layout>
     )
@@ -191,21 +203,22 @@ export default function EditForum({ forum }) {
 
 // 변경이 발생했을 수 있으므로 최신 데이터를 불러오기 위해 getStaticProps 대신 사용
 export async function getServerSideProps({ params: { forumId }, req }) {
-  try {
-    const res = await fetch(
-      `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
-    );
-    const forumData = await res.json();
-    const forum = forumData.data[0];
-    console.log(req.header.cookie);
+  const { token } = parseCookies(req);
 
+  const res = await fetch(
+    `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+  );
+  const forum = await res.json();
+
+  if (res.ok) {
     return {
       props: {
-        forum,
+        forum: forum.data[0],
+        token,
       },
     };
-  } catch (err) {
-    console.log(err);
+  } else {
+    console.log(res);
     return {
       props: {},
     };

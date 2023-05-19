@@ -1,23 +1,24 @@
 import Link from "next/link";
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
-import { Wrapper, ForumTitle } from "./styled";
+import { Wrapper, ForumTitle, OptionsBox, DeleteBtn } from "./styled";
 
-export default function ForumDashboard({ forum, onDelete }) {
+export default function ForumDashboard({ id, forum, onDelete }) {
+  console.log(forum);
   return (
     <Wrapper>
       <ForumTitle>
-        <Link href={`/forums/${forum.id}`}>{forum.name}</Link>
+        <Link href={`/forums/${id}`}>{forum.name}</Link>
       </ForumTitle>
-      <div>
-        <Link href={`forums/edit/${forum.id}`}>
+      <OptionsBox>
+        <Link href={`/forums/edit/${id}`}>
           <FaPencilAlt />
           <span>포럼 수정</span>
         </Link>
-        <Link href="#">
+        <DeleteBtn onClick={() => onDelete(id)}>
           <FaTimes />
           <span>포럼 삭제</span>
-        </Link>
-      </div>
+        </DeleteBtn>
+      </OptionsBox>
     </Wrapper>
   );
 }

@@ -19,39 +19,9 @@ export default function ForumPage({ forum }) {
   const router = useRouter();
   const { attributes } = forum;
 
-  const deleteForum = async () => {
-    if (window.confirm("정말 포럼을 삭제하시겠습니까?")) {
-      const res = await fetch(`http://localhost:1337/api/forums/${forum.id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.message);
-      } else {
-        router.push("/forums");
-      }
-    }
-  };
-
   return (
     <Layout>
       <Wrapper>
-        <EditBox>
-          <EditBtn onClick={() => router.push(`/forums/edit/${forum.id}`)}>
-            <div>
-              <FaPencilAlt />
-            </div>
-            <PStyled>포럼 정보 수정</PStyled>
-          </EditBtn>
-          <DeleteBtn onClick={deleteForum}>
-            <div>
-              <FaTimes />
-            </div>
-            <PStyled>포럼 삭제</PStyled>
-          </DeleteBtn>
-        </EditBox>
-
         <span>
           {new Date(attributes.date).toLocaleDateString("ko-KR", {
             year: "numeric",

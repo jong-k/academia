@@ -3,7 +3,7 @@ import { MUTATION_URL } from "@/config/index";
 import { FileBox } from "@/styles/common/ForumForm.styled";
 import { ButtonStyled } from "./styled";
 
-export default function ImgUpload({ forumId, imgUploaded }) {
+export default function ImgUpload({ forumId, imgUploaded, token }) {
   const [img, setImg] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -18,6 +18,9 @@ export default function ImgUpload({ forumId, imgUploaded }) {
     try {
       const res = await fetch(`${MUTATION_URL}/upload`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
       imgUploaded();
