@@ -23,7 +23,7 @@ const Header = () => {
                 <LinkStyled href="/forums/add">새 포럼 등록</LinkStyled>
               </li>
               <li>
-                <LinkStyled href="/account/dashboard">대시보드</LinkStyled>
+                <LinkStyled href="/account/mypage">마이페이지</LinkStyled>
               </li>
               <li>
                 <button onClick={logout}>로그아웃</button>

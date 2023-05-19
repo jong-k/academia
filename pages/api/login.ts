@@ -8,21 +8,20 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const { identifier, password } = req.body;
-    try {
-      const strapiRes = await fetch(`${QUERY_URL}/auth/local`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          identifier,
-          password,
-        }),
-      });
+    const strapiRes = await fetch(`${QUERY_URL}/auth/local`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        identifier,
+        password,
+      }),
+    });
 
-      const data = await strapiRes.json();
+    const data = await strapiRes.json();
 
-      // todo set cookie
+    if (strapiRes.ok) {
       res.setHeader(
         "Set-Cookie",
         cookie.serialize("token", data.jwt, {
@@ -34,8 +33,8 @@ export default async function handler(
         }),
       );
       res.status(200).json({ user: data.user });
-    } catch (err) {
-      res.status(err.status).json({ message: err.message });
+    } else {
+      res.status(data.error.status).json({ message: data.error.message });
     }
   } else {
     res.setHeader("Allow", ["POST"]);

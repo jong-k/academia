@@ -10,45 +10,43 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   const signup = async (user) => {
-    try {
-      const res = await fetch(`${CLIENT_URL}/signup`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+    setError(null);
+    const res = await fetch(`${CLIENT_URL}/signup`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await res.json();
 
-      const data = await res.json();
-
+    if (res.ok) {
       setUser(data.user);
-      router.push("/account/dashboard");
-    } catch (err) {
-      setError(err.message);
-      setError(null);
+      await router.push("/account/dashboard");
+    } else {
+      setError(data.message);
     }
   };
 
   const login = async ({ email: identifier, password }) => {
-    try {
-      const res = await fetch(`${CLIENT_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          identifier,
-          password,
-        }),
-      });
+    setError(null);
+    const res = await fetch(`${CLIENT_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        identifier,
+        password,
+      }),
+    });
+    const data = await res.json();
 
-      const data = await res.json();
-
+    if (res.ok) {
       setUser(data.user);
-      router.push("/account/dashboard");
-    } catch (err) {
-      setError(err.message); // toast 작동
-      setError(null);
+      await router.push("/account/mypage");
+    } else {
+      await setError(data.message);
     }
   };
 

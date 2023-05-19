@@ -19,16 +19,40 @@ export default function SignupPage() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    // 회원가입 폼 검증
+    // 하나라도 비었으면 에러
+    if (Object.values(signupForm).some((input) => input.trim() === "")) {
+      toast.error("모든 칸을 입력해야 합니다");
+      return;
+    }
+
+    // 이름이 3자 미만이면 에러
+    if (signupForm.username.trim().length < 3) {
+      toast.error("이름은 3자 이상이어야 합니다");
+      return;
+    }
+
+    // 비밀번호 확인이 일치하지 않으면 에러
     if (signupForm.password !== signupForm.passConfirm) {
       toast.error("비밀번호가 일치하지 않습니다");
       return;
     }
+
+    // 비밀번호 6자 이상아니면 에러
+    if (
+      signupForm.password.trim().length < 6 &&
+      signupForm.passConfirm.trim().length < 6
+    ) {
+      toast.error("6자 이상의 비밀번호를 입력해야 합니다");
+      return;
+    }
+
     onSubmit(e);
   };
 
   useEffect(() => {
     if (error) toast.error(error);
-  });
+  }, [error]);
 
   return (
     <Layout title="회원 가입">

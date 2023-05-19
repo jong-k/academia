@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { FormEvent, useContext, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,19 +14,37 @@ import {
 import { AuthContext } from "@/context/AuthContext";
 
 export default function LoginPage() {
-  const { loginForm, handleInputChange, handleSubmit } = useLogin();
+  const { loginForm, handleInputChange, onLogin } = useLogin();
   const { error } = useContext(AuthContext);
+
+  const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+    // 로그인 폼 검증
+    // 하나라도 비었으면 에러
+    if (Object.values(loginForm).some((input) => input.trim() === "")) {
+      toast.error("모든 칸을 입력해야 합니다");
+      return;
+    }
+
+    // 비번이 6자 미만이면 에러
+    if (loginForm.password.trim().length < 6) {
+      toast.error("비밀번호는 6자 이상이어야 합니다");
+      return;
+    }
+
+    onLogin(e);
+  };
 
   useEffect(() => {
     if (error) toast.error(error);
-  });
+  }, [error]);
 
   return (
     <Layout title="로그인">
       <Wrapper>
         <h1>로그인</h1>
         <ToastContainer />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <AuthBox>
             <AuthLabel htmlFor="email">이메일</AuthLabel>
             <AuthInput

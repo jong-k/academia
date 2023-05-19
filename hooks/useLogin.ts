@@ -13,10 +13,9 @@ export const useLogin = () => {
     setLoginForm({ ...loginForm, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const onLogin = (e: FormEvent) => {
     login(loginForm);
   };
 
-  return { loginForm, handleInputChange, handleSubmit };
+  return { loginForm, handleInputChange, onLogin };
 };

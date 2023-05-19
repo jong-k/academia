@@ -11,8 +11,9 @@ import {
   ButtonStyled,
   GridBox,
 } from "@/styles/common/ForumForm.styled";
+import { parseCookies } from "../../utils";
 
-export default function AddForumPage() {
+export default function AddForumPage({ token }) {
   const router = useRouter();
   // react-toastify 사용을 위해
   // SSR로 인한 Hydration 에러를 방지하기 위해
@@ -30,10 +31,9 @@ export default function AddForumPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const hasEmptyFields = Object.values(formData).some(
-      (field) => field === "",
-    );
-    if (hasEmptyFields) {
+    // 폼 검증
+
+    if (Object.values(formData).some((field) => field === "")) {
       toast.error("모든 칸을 입력해야 합니다");
       return;
     }
@@ -42,15 +42,20 @@ export default function AddForumPage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ data: formData }),
     });
 
     if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error("토큰이 없습니다");
+        return;
+      }
       toast.error("포럼 등록에 실패했습니다. 다시 시도해주세요");
     } else {
-      const { data: forum } = await res.json();
-      router.push(`/forums/${forum.id}`);
+      const forum = await res.json();
+      await router.push(`/forums/${forum.id}`);
     }
   };
 
@@ -148,4 +153,14 @@ export default function AddForumPage() {
       </Layout>
     )
   );
+}
+
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req);
+
+  return {
+    props: {
+      token,
+    },
+  };
 }
