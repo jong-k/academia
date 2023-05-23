@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { QUERY_URL, MUTATION_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 import Layout from "@/components/Layout";
 import {
   InputStyled,
@@ -39,7 +39,7 @@ export default function EditForum({ forum, token }) {
   const imgUploaded = async (e: ChangeEvent<HTMLInputElement>) => {
     try {
       const res = await fetch(
-        `${MUTATION_URL}/forums?filters[id][$eq]=${forum.id}&populate=*`,
+        `${SERVER_URL}/forums?filters[id][$eq]=${forum.id}&populate=*`,
       );
       const data = await res.json();
       setImgPreview(
@@ -61,7 +61,7 @@ export default function EditForum({ forum, token }) {
       return;
     }
 
-    const res = await fetch(`${MUTATION_URL}/forums/${forum.id}`, {
+    const res = await fetch(`${SERVER_URL}/forums/${forum.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -206,7 +206,7 @@ export async function getServerSideProps({ params: { forumId }, req }) {
   const { token } = parseCookies(req);
 
   const res = await fetch(
-    `${QUERY_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
+    `${SERVER_URL}/forums?filters[id][$eq]=${forumId}&populate=*`,
   );
   const forum = await res.json();
 

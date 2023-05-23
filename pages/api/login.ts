@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
-import { QUERY_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const { identifier, password } = req.body;
-    const strapiRes = await fetch(`${QUERY_URL}/auth/local`, {
+    const strapiRes = await fetch(`${SERVER_URL}/auth/local`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

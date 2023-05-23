@@ -2,15 +2,14 @@ import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import ForumDashboard from "@/components/ForumDashboard";
 import { parseCookies } from "../../utils";
-import { QUERY_URL } from "@/config/index";
 import { Wrapper } from "@/styles/pages/Mypage.styled";
-import { MUTATION_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 
 export default function MypagePage({ forums, token }) {
   const router = useRouter();
 
   const deleteForum = async (forumId: number) => {
-    const url = `${MUTATION_URL}/forums/${forumId}`;
+    const url = `${SERVER_URL}/forums/${forumId}`;
     if (window.confirm("정말 삭제하시겠습니까?")) {
       const res = await fetch(url, {
         method: "DELETE",
@@ -48,7 +47,7 @@ export default function MypagePage({ forums, token }) {
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
-  const res = await fetch(`${QUERY_URL}/forums/me`, {
+  const res = await fetch(`${SERVER_URL}/forums/me`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,

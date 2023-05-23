@@ -12,6 +12,7 @@ import {
   GridBox,
 } from "@/styles/common/ForumForm.styled";
 import { parseCookies } from "../../utils";
+import { SERVER_URL } from "@/config/index";
 
 export default function AddForumPage({ token }) {
   const router = useRouter();
@@ -38,7 +39,9 @@ export default function AddForumPage({ token }) {
       return;
     }
 
-    const res = await fetch("http://localhost:1337/api/forums", {
+    const url = SERVER_URL + "/forums";
+
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

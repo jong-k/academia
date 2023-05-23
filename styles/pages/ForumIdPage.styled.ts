@@ -55,3 +55,12 @@ export const BackBtn = styled(Link)`
   margin-top: 40px;
   color: white;
 `;
+
+export const Description = styled.textarea`
+  width: 100%;
+  height: 150px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: initial;
+`;

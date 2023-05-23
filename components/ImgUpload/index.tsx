@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { MUTATION_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 import { FileBox } from "@/styles/common/ForumForm.styled";
 import { ButtonStyled } from "./styled";
 
@@ -16,7 +16,7 @@ export default function ImgUpload({ forumId, imgUploaded, token }) {
     formData.append("field", "image");
 
     try {
-      const res = await fetch(`${MUTATION_URL}/upload`, {
+      const res = await fetch(`${SERVER_URL}/upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

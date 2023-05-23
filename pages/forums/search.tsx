@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import qs from "qs";
-import { QUERY_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 import ForumItem from "@/components/ForumItem";
 
 export default function SearchPage({ forums }) {
@@ -50,7 +50,7 @@ export async function getServerSideProps({ query: { term } }) {
       encodeValuesOnly: true, // prettify URL
     },
   );
-  const res = await fetch(`${QUERY_URL}/forums?${query}&populate=*`);
+  const res = await fetch(`${SERVER_URL}/forums?${query}&populate=*`);
   const forums = await res.json();
 
   return {

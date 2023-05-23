@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
-import { QUERY_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,7 +15,7 @@ export default async function handler(
     const { token } = cookie.parse(req.headers.cookie);
 
     try {
-      const strapiRes = await fetch(`${QUERY_URL}/users/me`, {
+      const strapiRes = await fetch(`${SERVER_URL}/users/me`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

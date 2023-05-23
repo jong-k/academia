@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import ForumItem from "@/components/ForumItem";
-import { QUERY_URL, PER_PAGE } from "@/config/index";
+import { SERVER_URL, PER_PAGE } from "@/config/index";
 import Pagination from "@/components/Pagination";
 
 export default function ForumPage({ forums, page, total }) {
@@ -20,7 +20,7 @@ export default function ForumPage({ forums, page, total }) {
 export async function getServerSideProps({ query: { page = 1 } }) {
   const start = +page === 1 ? 0 : (+page - 1) * PER_PAGE;
   const res = await fetch(
-    `${QUERY_URL}/forums?populate=*&_sort=date:ASC&pagination[start]=${start}&pagination[limit]=${PER_PAGE}`,
+    `${SERVER_URL}/forums?populate=*&_sort=date:ASC&pagination[start]=${start}&pagination[limit]=${PER_PAGE}`,
   );
   const forumsData = await res.json();
   const forums = forumsData.data;

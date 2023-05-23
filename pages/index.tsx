@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/styles/common/Button.styled";
 import Layout from "@/components/Layout";
 import ForumItem from "@/components/ForumItem";
-import { QUERY_URL } from "@/config/index";
+import { SERVER_URL } from "@/config/index";
 
 export default function HomePage({ forums }) {
   return (
@@ -23,7 +23,7 @@ export default function HomePage({ forums }) {
 // 빌드 타임에 서버사이드에서 호출되는 함수 => SSG 기능
 export async function getStaticProps() {
   const res = await fetch(
-    `${QUERY_URL}/forums?populate=*&sort=date&pagination[limit]=3`,
+    `${SERVER_URL}/forums?populate=*&sort=date&pagination[limit]=3`,
   );
   const { data: forums } = await res.json();
 
