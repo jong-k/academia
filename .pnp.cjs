@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.38"],\
             ["@types/styled-components", "npm:5.1.26"],\
             ["cookie", "npm:0.5.0"],\
+            ["cors", "npm:2.8.5"],\
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-next", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:13.3.1"],\
             ["eslint-config-prettier", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:8.8.0"],\
@@ -746,6 +747,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.38"],\
             ["@types/styled-components", "npm:5.1.26"],\
             ["cookie", "npm:0.5.0"],\
+            ["cors", "npm:2.8.5"],\
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-next", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:13.3.1"],\
             ["eslint-config-prettier", "virtual:f96b4383d093d61f58523a558c7c24f28eca0df8647aae7be607d105113527c3d4fc1162647c530ee3c600d3eef8e7f1358089f4cfca0fea010cc570f45aad33#npm:8.8.0"],\
@@ -1166,6 +1168,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/cookie-npm-0.5.0-e2d58a161a-1f4bd2ca57.zip/node_modules/cookie/",\
           "packageDependencies": [\
             ["cookie", "npm:0.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cors", [\
+        ["npm:2.8.5", {\
+          "packageLocation": "./.yarn/cache/cors-npm-2.8.5-c9935a2d12-ced838404c.zip/node_modules/cors/",\
+          "packageDependencies": [\
+            ["cors", "npm:2.8.5"],\
+            ["object-assign", "npm:4.1.1"],\
+            ["vary", "npm:1.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3916,6 +3929,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["uri-js", "npm:4.4.1"],\
             ["punycode", "npm:2.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["vary", [\
+        ["npm:1.1.2", {\
+          "packageLocation": "./.yarn/cache/vary-npm-1.1.2-b49f70ae63-ae0123222c.zip/node_modules/vary/",\
+          "packageDependencies": [\
+            ["vary", "npm:1.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
