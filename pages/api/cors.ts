@@ -4,11 +4,7 @@ import Cors from "cors";
 // Initializing the cors middleware
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = Cors({
-  origin: [
-    "https://academia-pi.vercel.app",
-    "academia-git-main-jong-k.vercel.app",
-    "academia-jong-k.vercel.app",
-  ],
+  origin: ["https://academia-pi.vercel.app"],
   methods: ["POST", "GET", "HEAD", "DELETE", "PUT", "PATCH"],
 });
 
@@ -36,7 +32,4 @@ export default async function handler(
 ) {
   // Run the middleware
   await runMiddleware(req, res, cors);
-
-  // Rest of the API logic
-  res.json({ message: "cors success!" });
 }
