@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 export default function ForumPage({ forums, page, total }) {
   return (
     <Layout>
-      <h1>My Forums</h1>
+      <h1>전체 포럼</h1>
       {forums.length === 0 && <h3>등록된 포럼이 없습니다</h3>}
       {forums.map((forum) => (
         <ForumItem key={forum.id} forum={forum} />
