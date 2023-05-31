@@ -7,6 +7,8 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { MAP_KEY } from "@/config/index";
+import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -40,8 +42,13 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head />
         <body>
+          <Script
+            src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${MAP_KEY}&libraries=services,clusterer&autoload=false`}
+            strategy="beforeInteractive"
+          ></Script>
           <Main />
           <NextScript />
+
           <div id="modal-root" />
         </body>
       </Html>

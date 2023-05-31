@@ -15,10 +15,12 @@ import {
   BackBtn,
   Description,
 } from "@/styles/pages/ForumIdPage.styled";
+import ForumMap from "@/components/ForumMap";
 
 export default function ForumPage({ forum }) {
   const router = useRouter();
   const { attributes } = forum;
+  console.log(forum);
 
   return (
     <Layout>
@@ -50,6 +52,7 @@ export default function ForumPage({ forum }) {
         <Description readOnly>{attributes.description}</Description>
         <h3>장소: {attributes.place}</h3>
         <p>{attributes.address}</p>
+        <ForumMap address={attributes.address} place={attributes.place} />
         <Button>
           <BackBtn href="/forums">{"<"} 돌아가기</BackBtn>
         </Button>
