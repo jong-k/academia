@@ -1,16 +1,11 @@
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Layout from "@/components/Layout";
 import { Button } from "@/styles/common/Button.styled";
 import { SERVER_URL } from "@/config/index";
 import {
   Wrapper,
-  EditBox,
-  EditBtn,
-  PStyled,
-  DeleteBtn,
   ImageStyled,
   BackBtn,
   Description,
@@ -20,7 +15,6 @@ import ForumMap from "@/components/ForumMap";
 export default function ForumPage({ forum }) {
   const router = useRouter();
   const { attributes } = forum;
-  console.log(forum);
 
   return (
     <Layout>

@@ -16,7 +16,6 @@ export default function ForumPage({ forums, page, total }) {
   );
 }
 
-// 페이지네이션을 위해 getServerSideProps 사용
 export async function getServerSideProps({ query: { page = 1 } }) {
   const start = +page === 1 ? 0 : (+page - 1) * PER_PAGE;
   const res = await fetch(

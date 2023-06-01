@@ -16,8 +16,14 @@ const bladeFade = keyframes`
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const Spinner = styled.div``;
 
 export const SpinnerBlade = styled.div<SpinnerBladeProps>`
   position: absolute;
@@ -25,7 +31,7 @@ export const SpinnerBlade = styled.div<SpinnerBladeProps>`
   width: 1rem;
   height: 0.2rem;
   transform: rotate(${(p) => `${p.idx * (360 / p.total)}deg`});
-  transform-origin: 150% 50%;
+  transform-origin: 175% 50%;
   animation: ${bladeFade} 1s infinite linear;
   animation-delay: ${(p) => p.idx * (1 / p.total)}s;
 `;

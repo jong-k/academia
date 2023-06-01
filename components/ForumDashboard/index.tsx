@@ -3,7 +3,6 @@ import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import { Wrapper, ForumTitle, OptionsBox, DeleteBtn } from "./styled";
 
 export default function ForumDashboard({ id, forum, onDelete }) {
-  console.log(forum);
   return (
     <Wrapper>
       <ForumTitle>

@@ -20,7 +20,6 @@ export default function HomePage({ forums }) {
   );
 }
 
-// 빌드 타임에 서버사이드에서 호출되는 함수 => SSG 기능
 export async function getStaticProps() {
   const res = await fetch(
     `${SERVER_URL}/forums?populate=*&sort=date&pagination[limit]=3`,
@@ -29,6 +28,6 @@ export async function getStaticProps() {
 
   return {
     props: { forums },
-    revalidate: 1, // 데이터가 바뀌는지 1 초마다 확인하여 바뀌면 페이지 재생성
+    revalidate: 1,
   };
 }

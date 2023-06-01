@@ -1,4 +1,8 @@
-import { Wrapper, SpinnerBlade } from "@/components/LoadingSpinner/styled";
+import {
+  Spinner,
+  SpinnerBlade,
+  Wrapper,
+} from "@/components/LoadingSpinner/styled";
 
 export default function LoadingSpinner({
   bladeNum = 12,
@@ -9,9 +13,11 @@ export default function LoadingSpinner({
 
   return (
     <Wrapper>
-      {bladeNumArr.map((_, i) => (
-        <SpinnerBlade key={i} idx={i} total={bladeNum} />
-      ))}
+      <Spinner>
+        {bladeNumArr.map((_, i) => (
+          <SpinnerBlade key={i} idx={i} total={bladeNum} />
+        ))}
+      </Spinner>
     </Wrapper>
   );
 }

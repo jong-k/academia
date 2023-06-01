@@ -28,4 +28,18 @@ export const SubmitButton = styled.button`
   margin-top: 20px;
   width: 100%;
   font-size: 17px;
+  padding: 0.75rem 0;
+  color: #eee;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  background: ${(p) => p.theme.colors.accent200};
+  cursor: pointer;
+`;
+
+export const SpinnerWrapper = styled.div`
+  max-width: 500px;
+  height: 600px;
+  padding: 30px;
+  margin: auto;
 `;
