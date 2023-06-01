@@ -1,7 +1,7 @@
+<br />
 <div style="display: flex; justify-content: center">
 	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbUOKrx%2Fbtsij87unuN%2FerKdHnlntuhAuH2ki3BYuK%2Fimg.png" alt="아카데미아">
 </div>
-
 
 # academia
 > 스터디 그룹을 쉽게 만들고 참여할 수 있는 웹 서비스
