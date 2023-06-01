@@ -28,7 +28,7 @@ export default async function handler(
         cookie.serialize("token", data.jwt, {
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
-          maxAge: 60 * 60 * 24 * 7, // 1 week
+          maxAge: 60 * 60 * 24, // 1 일
           sameSite: "strict",
           path: "/",
         }),

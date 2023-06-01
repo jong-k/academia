@@ -64,7 +64,6 @@ export async function getServerSideProps({ req }) {
       },
     };
   } else {
-    console.log(forums);
     return {
       notFound: true,
     };
