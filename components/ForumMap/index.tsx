@@ -1,5 +1,5 @@
-import { Map } from "./styled";
 import { useEffect } from "react";
+import { Map } from "./styled";
 
 declare global {
   interface Window {
@@ -33,7 +33,7 @@ export default function ForumMap({ address, place }: ForumMapProps) {
             position: coords,
           });
           const infoWindow = new kakao.maps.InfoWindow({
-            content: place,
+            content: `<div style="width:150px;text-align:center;overflow-wrap: break-word;">${place}</div>`,
           });
           infoWindow.open(map, marker);
           map.setCenter(coords);
