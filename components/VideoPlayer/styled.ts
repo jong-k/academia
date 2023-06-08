@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaQuery } from "@/styles/breakPoints";
 
 export const Wrapper = styled.div`
   overflow-x: hidden;
@@ -9,16 +10,14 @@ export const VideoStyled = styled.video`
   width: 100vw;
 `;
 
-export const TitleWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-`;
-
 export const Title = styled.h2`
-  text-align: center;
   font-size: 3rem;
   position: absolute;
-  top: 5rem;
+  top: 12%;
   left: 2rem;
+  margin: auto;
+
+  ${mediaQuery("mobile")`
+    font-size: 1.35rem;
+  `}
 `;

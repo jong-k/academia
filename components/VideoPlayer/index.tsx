@@ -1,4 +1,4 @@
-import { Wrapper, VideoStyled, TitleWrapper, Title } from "./styled";
+import { Wrapper, VideoStyled, Title } from "./styled";
 
 interface VideoPLayerProps {
   videoSrc: string;
