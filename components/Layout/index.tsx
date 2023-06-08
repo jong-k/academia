@@ -6,8 +6,8 @@ import theme from "@/styles/theme";
 import { MainStyled } from "./styled";
 import Header from "../Header";
 import Index from "../Footer";
-import Banner from "../Banner";
-import { BANNER_TEXT } from "../../enum";
+import { VIDEO_URL } from "@/config/index";
+import VideoPlayer from "@/components/VideoPlayer";
 
 interface LayoutProps {
   title?: string;
@@ -34,7 +34,10 @@ const Layout = ({
       </Head>
       <Header />
       {router.pathname === "/" && (
-        <Banner title={BANNER_TEXT.TITLE} subtitle={BANNER_TEXT.SUB_TITLE} />
+        <VideoPlayer
+          videoSrc={VIDEO_URL}
+          title="함께 가면 더 멀리갈 수 있습니다"
+        />
       )}
       <MainStyled>{children}</MainStyled>
       <Index />
