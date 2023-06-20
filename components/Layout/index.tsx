@@ -6,8 +6,10 @@ import theme from "styles/theme";
 import { MainStyled } from "./styled";
 import Header from "../Header";
 import Index from "../Footer";
-import { VIDEO_URL } from "config/index";
+import { VIDEO_URL } from "config";
 import VideoPlayer from "components/VideoPlayer";
+import MainCarousel from "../Carousel/MainCarousel";
+import { CAROUSEL_CONTENTS_LIST } from "enum";
 
 interface LayoutProps {
   title?: string;
@@ -38,6 +40,9 @@ const Layout = ({
           videoSrc={VIDEO_URL}
           title="함께 가면 더 멀리갈 수 있습니다"
         />
+      )}
+      {router.pathname === "/about" && (
+        <MainCarousel data={CAROUSEL_CONTENTS_LIST} />
       )}
       <MainStyled>{children}</MainStyled>
       <Index />
