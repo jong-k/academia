@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FooterStyled } from "./styled";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <FooterStyled>
       <p>Copyright &copy; 아카데미아</p>
@@ -10,6 +10,4 @@ const Footer = () => {
       </p>
     </FooterStyled>
   );
-};
-
-export default Footer;
+}

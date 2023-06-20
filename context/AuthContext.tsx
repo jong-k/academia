@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { CLIENT_URL } from "@/config/index";
+import { CLIENT_URL } from "config";
 
 export const AuthContext = createContext(null);
 

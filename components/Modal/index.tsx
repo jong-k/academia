@@ -7,7 +7,7 @@ import {
   Header,
   Overlay,
   Content,
-} from "@/components/Modal/styled";
+} from "components/Modal/styled";
 
 interface ModalProps {
   show: boolean;

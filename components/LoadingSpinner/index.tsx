@@ -2,7 +2,7 @@ import {
   Spinner,
   SpinnerBlade,
   Wrapper,
-} from "@/components/LoadingSpinner/styled";
+} from "components/LoadingSpinner/styled";
 
 export default function LoadingSpinner({
   bladeNum = 12,

@@ -7,7 +7,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { MAP_KEY } from "@/config/index";
+import { MAP_KEY } from "config";
 import Script from "next/script";
 
 class MyDocument extends Document {

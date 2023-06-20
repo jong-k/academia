@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/config/*": ["config/*"],
-      "@/styles/*": ["styles/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/context/*": ["context/*"]
-    },
+//    "paths": {
+//      "@/components/*": ["components/*"],
+//      "@/config/*": ["config/*"],
+//      "@/styles/*": ["styles/*"],
+//      "@/hooks/*": ["hooks/*"],
+//      "@/context/*": ["context/*"]
+//    },
     "lib": [
       "dom",
       "dom.iterable",

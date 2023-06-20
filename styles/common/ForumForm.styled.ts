@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaQuery } from "@/styles/breakPoints";
+import { mediaQuery } from "styles/breakPoints";
 
 export const LabelStyled = styled.label`
   display: block;

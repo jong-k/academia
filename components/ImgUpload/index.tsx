@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
-import { SERVER_URL } from "@/config/index";
-import { FileBox } from "@/styles/common/ForumForm.styled";
+import { SERVER_URL } from "config/index";
+import { FileBox } from "styles/common/ForumForm.styled";
 import { ButtonStyled } from "./styled";
 
 export default function ImgUpload({ forumId, imgUploaded, token }) {

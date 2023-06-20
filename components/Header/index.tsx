@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "@/context/AuthContext";
+import { AuthContext } from "context/AuthContext";
 import { HeaderStyled, Logo, LinkStyled, UlStyled } from "./styled";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "components/SearchBar";
 
-const Header = () => {
+export default function Header() {
   const { user, logout } = useContext(AuthContext);
 
   return (
@@ -40,6 +40,4 @@ const Header = () => {
       </nav>
     </HeaderStyled>
   );
-};
-
-export default Header;
+}

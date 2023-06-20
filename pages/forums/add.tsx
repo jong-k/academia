@@ -3,16 +3,16 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "@/components/Layout";
+import Layout from "components/Layout";
 import {
   InputStyled,
   LabelStyled,
   TextareaStyled,
   ButtonStyled,
   GridBox,
-} from "@/styles/common/ForumForm.styled";
-import { parseCookies } from "../../utils";
-import { SERVER_URL } from "@/config/index";
+} from "styles/common/ForumForm.styled";
+import { parseCookies } from "utils";
+import { SERVER_URL } from "config";
 
 export default function AddForumPage({ token }) {
   const router = useRouter();

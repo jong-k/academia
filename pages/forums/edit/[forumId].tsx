@@ -4,17 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { SERVER_URL } from "@/config/index";
-import Layout from "@/components/Layout";
+import { SERVER_URL } from "config";
+import Layout from "components/Layout";
 import {
   InputStyled,
   LabelStyled,
   TextareaStyled,
   ButtonStyled,
   GridBox,
-} from "@/styles/common/ForumForm.styled";
-import ImgUpload from "@/components/ImgUpload";
-import Modal from "@/components/Modal";
+} from "styles/common/ForumForm.styled";
+import ImgUpload from "components/ImgUpload";
+import Modal from "components/Modal";
 import { parseCookies } from "../../../utils";
 
 export default function EditForum({ forum, token }) {

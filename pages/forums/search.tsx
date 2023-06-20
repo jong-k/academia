@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
+import Layout from "components/Layout";
 import qs from "qs";
-import { SERVER_URL } from "@/config/index";
-import ForumItem from "@/components/ForumItem";
+import { SERVER_URL } from "config";
+import ForumItem from "components/ForumItem";
 
 export default function SearchPage({ forums }) {
   const router = useRouter();

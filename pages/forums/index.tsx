@@ -1,7 +1,7 @@
-import Layout from "@/components/Layout";
-import ForumItem from "@/components/ForumItem";
-import { SERVER_URL, PER_PAGE } from "@/config/index";
-import Pagination from "@/components/Pagination";
+import Layout from "components/Layout";
+import ForumItem from "components/ForumItem";
+import { SERVER_URL, PER_PAGE } from "config";
+import Pagination from "components/Pagination";
 
 export default function ForumPage({ forums, page, total }) {
   return (

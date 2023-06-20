@@ -2,8 +2,8 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "@/components/Layout";
-import { useLogin } from "@/hooks/useLogin";
+import Layout from "components/Layout";
+import { useLogin } from "hooks/useLogin";
 import {
   Wrapper,
   AuthBox,
@@ -11,9 +11,9 @@ import {
   AuthInput,
   SubmitButton,
   SpinnerWrapper,
-} from "@/styles/common/AuthForm.styled";
-import { AuthContext } from "@/context/AuthContext";
-import LoadingSpinner from "@/components/LoadingSpinner";
+} from "styles/common/AuthForm.styled";
+import { AuthContext } from "context/AuthContext";
+import LoadingSpinner from "components/LoadingSpinner";
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);

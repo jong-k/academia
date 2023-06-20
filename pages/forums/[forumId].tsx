@@ -1,16 +1,16 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
-import { Button } from "@/styles/common/Button.styled";
-import { SERVER_URL } from "@/config/index";
+import Layout from "components/Layout";
+import { Button } from "styles/common/Button.styled";
+import { SERVER_URL } from "config";
 import {
   Wrapper,
   ImageStyled,
   BackBtn,
   Description,
-} from "@/styles/pages/ForumIdPage.styled";
-import ForumMap from "@/components/ForumMap";
+} from "styles/pages/ForumIdPage.styled";
+import ForumMap from "components/ForumMap";
 
 export default function ForumPage({ forum }) {
   const router = useRouter();

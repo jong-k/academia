@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
-import ForumDashboard from "@/components/ForumDashboard";
-import { parseCookies } from "../../utils";
-import { Wrapper } from "@/styles/pages/Mypage.styled";
-import { SERVER_URL } from "@/config/index";
+import Layout from "components/Layout";
+import ForumDashboard from "components/ForumDashboard";
+import { parseCookies } from "utils";
+import { Wrapper } from "styles/pages/Mypage.styled";
+import { SERVER_URL } from "config/index";
 
 export default function MypagePage({ forums, token }) {
   const router = useRouter();

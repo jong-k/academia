@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Button } from "@/styles/common/Button.styled";
-import Layout from "@/components/Layout";
-import ForumItem from "@/components/ForumItem";
-import { SERVER_URL } from "@/config/index";
+import { Button } from "styles/common/Button.styled";
+import Layout from "components/Layout";
+import ForumItem from "components/ForumItem";
+import { SERVER_URL } from "config";
 
 export default function HomePage({ forums }) {
   return (

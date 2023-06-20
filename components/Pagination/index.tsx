@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { PER_PAGE } from "../../config";
-import { Button } from "@/styles/common/Button.styled";
+import { PER_PAGE } from "config";
+import { Button } from "styles/common/Button.styled";
 
 interface PaginationProps {
   page: number;

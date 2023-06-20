@@ -1,4 +1,5 @@
-import Layout from "@/components/Layout";
+import Layout from "components/Layout";
+import MainCarousel from "components/Carousel/MainCarousel";
 
 const AboutPage = () => {
   return (

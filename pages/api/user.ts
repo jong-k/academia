@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
-import { SERVER_URL } from "@/config/index";
+import { SERVER_URL } from "config";
 
 export default async function handler(
   req: NextApiRequest,
