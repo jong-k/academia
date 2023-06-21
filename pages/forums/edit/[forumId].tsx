@@ -15,7 +15,7 @@ import {
 } from "styles/common/ForumForm.styled";
 import ImgUpload from "components/ImgUpload";
 import Modal from "components/Modal";
-import { parseCookies } from "../../../utils";
+import { parseCookies } from "utils";
 
 export default function EditForum({ forum, token }) {
   const [mounted, setMounted] = useState(false);

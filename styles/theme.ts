@@ -17,6 +17,7 @@ const theme = {
   heights: {
     banner: "350px",
     mainCarousel: "500px",
+    header: "70px",
   },
 };
 
