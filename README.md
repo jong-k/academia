@@ -6,7 +6,7 @@
 # academia
 > 스터디 그룹을 쉽게 만들고 참여할 수 있는 웹 서비스
 
-[배포 URL](https://academia-pi.vercel.app/)
+현재는 배포를 중단했습니다
 
 ## 기술 스택
 ### 핵심 기술
